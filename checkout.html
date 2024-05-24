@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo.jpg" />
+    <link rel="stylesheet" href="./styles/checkout.css" />
+
+    <script src="./src/checkout.js" type="module"></script>
+
+    <title>Checkout</title>
+  </head>
+  <body>
+    <div class="toolbar">
+      <a href="home.html">
+        <img
+          src="./assets/icons-general/chevron-left.svg"
+          width="20px"
+          alt="back"
+        />
+      </a>
+      <p>Checkout ( <span class="items-no"></span> )</p>
+      <a href="profile.html">
+        <img src="./assets/icons-general/profile.svg" width="20px" />
+        <p>Profile</p>
+      </a>
+    </div>
+
+    <main>
+      <div class="page-title">Review your order</div>
+
+      <div class="checkout-grid">
+        <div class="order-summary"></div>
+
+        <div class="payment-summary js-payment-summary"></div>
+      </div>
+    </main>
+
+    <footer>
+      <p>SELHAM</p>
+      <a href="#">
+        <img
+          src="./assets/icons-general/chevron-up-white.ico"
+          alt="top of page"
+          width="26px"
+        />
+      </a>
+      <p>All Rights Reserved &copy;</p>
+    </footer>
+  </body>
+</html>

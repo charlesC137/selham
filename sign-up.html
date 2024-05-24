@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sign up</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles/sign-up.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo.jpg" />
+
+    <script type="module" src="./src/sign-up.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="left"></div>
+
+      <form action="" method="get" class="right">
+        <div class="input-section">
+          <label for="email">E-mail</label>
+          <input type="email" placeholder="johnson@gmail.com" id="email" />
+          <label for="username">Username</label>
+          <input type="text" placeholder="johnson123" id="username" />
+          <label for="password"
+            >Password
+            <button class="view-pw">
+              <img
+                class="view-img"
+                src="./assets/icons-general/eye-open.svg"
+                alt="see"
+                width="18px"
+              />
+            </button>
+          </label>
+          <input type="password" id="password" />
+
+          <div class="error-msg"></div>
+        </div>
+
+        <button class="sign-up-btn">SIGN UP</button>
+
+        <a href="log-in.html">Log-in</a>
+      </form>
+    </main>
+  </body>
+</html>

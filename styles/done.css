@@ -1,0 +1,42 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  row-gap: 100px;
+}
+
+p{
+  font-size: 70px;
+  font-weight: 700;
+  display: inline;
+  margin-right: 20px;
+  animation: colorSwitch 3s infinite;
+  animation-direction: alternate;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(126, 176, 193);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+@keyframes colorSwitch{
+  0%{
+    color:red;
+  }
+
+  50%{
+    color: rgb(115, 167, 184)
+  }
+
+  100%{
+    color: green;
+  }
+}

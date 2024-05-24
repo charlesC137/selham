@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo.jpg" />
+    <link rel="stylesheet" href="./styles/home.css" />
+
+    <script src="./src/home.js" type="module"></script>
+
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="bg-img-div">
+      <div class="greetings">
+        Hello there, <span class="username"></span>
+        <img alt="" src="./assets/icons-general/smiley-face.ico" width="32px" />
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="icons">
+        <button class="menu-btn">
+          <img src="./assets/icons-general/bars.svg" alt="bars" width="26px" />
+          <p>Menu</p>
+        </button>
+
+        <a href="home.html">
+          <img src="./assets/logo.jpg" alt="logo" width="40px" />
+        </a>
+
+        <div class="icons-div-rgt">
+          <a href="profile.html">
+            <img
+              src="./assets/icons-general/profile.svg"
+              alt="profile"
+              width="26px"
+            />
+            <p>Profile</p>
+          </a>
+
+          <a href="checkout.html">
+            <img
+              src="./assets/icons-general/cart.svg"
+              alt="cart"
+              width="26px"
+            />
+            <p>Cart <span class="cart-items-no"></span></p>
+          </a>
+
+          <button class="search-btn-top">
+            <img
+              src="./assets/icons-general/search-bar.svg"
+              alt="search"
+              width="26px"
+            />
+          </button>
+        </div>
+      </div>
+
+      <div class="search-div">
+        <button class="search-btn">
+          <img
+            src="./assets/icons-general/search-bar.svg"
+            alt="search"
+            width="20px"
+          />
+        </button>
+
+        <input type="text" class="search-bar" placeholder="Search..." />
+
+        <button class="close-btn">
+          <img
+            src="./assets/icons-general/cross.svg"
+            alt="cross"
+            width="20px"
+          />
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="logo_close-btn">
+        <button class="close-btn">
+          <img
+            src="./assets/icons-general/cross.svg"
+            alt="close"
+            width="20px"
+          />
+        </button>
+
+        <a href="home.html">
+          <img src="./assets/logo.jpg" alt="logo" width="40px" />
+        </a>
+      </div>
+
+      <hr />
+
+      <div class="category-div">
+        <div>
+          <h3>Categories</h3>
+          <button class="cat-down-btn">
+            <img src="./assets/icons-general/chevron-down.svg" />
+          </button>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="cat-btm-div">
+        <a href="home.html">Service Center</a>
+        <a href="home.html">Contact Us</a>
+      </div>
+    </div>
+
+    <main>
+      <div class="products-grid"></div>
+    </main>
+
+    <footer>
+      <p>SELHAM</p>
+      <a href="#">
+        <img
+          src="./assets/icons-general/chevron-up-white.ico"
+          alt="top of page"
+          width="26px"
+        />
+      </a>
+      <p>All Rights Reserved &copy;</p>
+    </footer>
+  </body>
+</html>

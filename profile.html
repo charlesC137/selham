@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo.jpg" />
+    <link rel="stylesheet" href="./styles/profile.css" />
+
+    <script src="./src/profile.js" type="module"></script>
+
+    <title>Profile</title>
+  </head>
+<body>
+  <main>
+    <div class="left"></div>
+
+    <div class="right">
+     <div class="container">
+      <div class="top-div">
+        <p>Welcome, <span class="username">author</span></p>
+
+        <div>
+          <button class="sign-out-btn">
+            Sign-out
+          </button>
+
+          <button class="delete-btn">
+            Delete Account
+          </button>
+        </div>
+      </div>
+
+
+      <div class="sec-div">
+        <p>
+          Username: <span class="username"></span>
+        </p>
+
+        <p>
+          Email: <span class="useremail"></span>
+        </p>
+
+        <p>
+          Password: <span class="user-password"></span>
+        </p>
+      </div>
+
+      <a href="home.html">
+        Back To Home
+      </a>
+     </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>SELHAM</p>
+
+    <p>All Rights Reserved &copy;</p>
+  </footer>
+
+
+  <div class="modal-div">
+    <div class="modal-container">
+      <div class="confirm-p">
+        Are you sure you want to delete your account?
+      </div>
+
+      <div>
+        <button class="delete-btn-modal">
+          Yes, Delete
+        </button>
+        <button class="cancel-btn-modal">
+          No, Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
