@@ -14,6 +14,14 @@ main {
   width: 100%;
 }
 
+a{
+  color: black
+}
+
+a:visited{
+  color: black
+}
+
 .left {
   background: url("../assets/bg-images/left_bg_signup_login.jpg");
   background-size: cover;
