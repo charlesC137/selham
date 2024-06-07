@@ -35,8 +35,7 @@ viewPass.addEventListener("click", (e) => {
 });
 
 signUpBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  signUserUp();
+  
 });
 
 function togglePassword(input, img) {
@@ -49,56 +48,56 @@ function togglePassword(input, img) {
   }
 }
 
-async function signUserUp() {
-  let state;
+// async function signUserUp() {
+//   let state;
 
-  if (
-    emailRegex.test(emailInput.value) &&
-    usernameRegex.test(username.value) &&
-    passwordRegex.test(passwordInput.value)
-  ) {
-    if (users.length === 0) {
-      state = true;
-    } else {
-      for (const user of users) {
-        if (emailInput.value === user.userLogins.email) {
-          errorMsg.textContent = "E-mail already registered";
-          state = false;
-          break;
-        } else if (usernameInput.value === user.userLogins.username) {
-          errorMsg.textContent = "Username already in use";
-          state = false;
-          break;
-        } else {
-          state = true;
-        }
-      }
-    }
+//   if (
+//     emailRegex.test(emailInput.value) &&
+//     usernameRegex.test(username.value) &&
+//     passwordRegex.test(passwordInput.value)
+//   ) {
+//     if (users.length === 0) {
+//       state = true;
+//     } else {
+//       for (const user of users) {
+//         if (emailInput.value === user.userLogins.email) {
+//           errorMsg.textContent = "E-mail already registered";
+//           state = false;
+//           break;
+//         } else if (usernameInput.value === user.userLogins.username) {
+//           errorMsg.textContent = "Username already in use";
+//           state = false;
+//           break;
+//         } else {
+//           state = true;
+//         }
+//       }
+//     }
 
-    if (state) {
-      users.push(
-        new user(
-          new userLogins(
-            emailInput.value,
-            usernameInput.value,
-            passwordInput.value
-          )
-        )
-      );
+//     if (state) {
+//       users.push(
+//         new user(
+//           new userLogins(
+//             emailInput.value,
+//             usernameInput.value,
+//             passwordInput.value
+//           )
+//         )
+//       );
 
-      await modData(users);
-      currentUser = new user(
-        new userLogins(
-          emailInput.value,
-          usernameInput.value,
-          passwordInput.value
-        )
-      );
+//       await modData(users);
+//       currentUser = new user(
+//         new userLogins(
+//           emailInput.value,
+//           usernameInput.value,
+//           passwordInput.value
+//         )
+//       );
 
-      localStorage.setItem("selham_currentUser", JSON.stringify(currentUser));
-      window.open("home.html", "_self");
-    }
-  } else {
-    errorMsg.textContent = "Invalid input";
-  }
-}
+//       localStorage.setItem("selham_currentUser", JSON.stringify(currentUser));
+//       window.open("log-in.html", "_self");
+//     }
+//   } else {
+//     errorMsg.textContent = "Invalid input";
+//   }
+// }
