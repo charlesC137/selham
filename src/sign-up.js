@@ -31,17 +31,17 @@ function togglePassword(input, img) {
 }
 
 async function signUserUp() {
-  const response = await fetch('https://api-selham.onrender.com/api/signup', {
+  const response = await fetch("https://api-selham.onrender.com/api/signup", {
     method: "POST",
-    headers:{
+    headers: {
       "Content-Type": "application/json"
     },
-    body:{
+    body: {
       "username": `${usernameInput.value}`,
       "email": `${emailInput.value}`,
-      "password": `${passwordInput.value}`
-    }
+      "password": `${passwordInput.value}`,
+    },
   });
 
-  console.log(response)
+  console.log(response);
 }
