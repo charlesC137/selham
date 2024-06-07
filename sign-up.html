@@ -22,12 +22,12 @@
     <main>
       <div class="left"></div>
 
-      <form action="" method="get" class="right">
+      <form action="https://api-selham.onrender.com/api/signup" method="POST" class="right">
         <div class="input-section">
           <label for="email">E-mail</label>
-          <input type="email" placeholder="johnson@gmail.com" id="email" />
+          <input type="email" placeholder="johnson@gmail.com" id="email" name="email"/>
           <label for="username">Username</label>
-          <input type="text" placeholder="johnson123" id="username" />
+          <input type="text" placeholder="johnson123" id="username" name="username"/>
           <label for="password"
             >Password
             <button class="view-pw">
@@ -39,7 +39,7 @@
               />
             </button>
           </label>
-          <input type="password" id="password" />
+          <input type="password" id="password" name="password"/>
 
           <div class="error-msg"></div>
         </div>
