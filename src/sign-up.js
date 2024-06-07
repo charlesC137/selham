@@ -43,5 +43,5 @@ async function signUserUp() {
     },
   });
 
-  console.log(response);
+  console.log(response.json());
 }
