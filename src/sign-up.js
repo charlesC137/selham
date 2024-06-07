@@ -43,5 +43,6 @@ async function signUserUp() {
     },
   });
 
-  console.log(response.json());
+  const state = await response.json();
+  console.log(state)
 }
