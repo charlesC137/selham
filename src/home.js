@@ -7,7 +7,7 @@ import {
   categoryArray,
 } from "./general.js";
 
-import { fetchProducts, saveCart } from "./bin.js";
+import { fetchProducts } from "./bin.js";
 
 let products = JSON.parse(localStorage.getItem("selham_products")) || [];
 
@@ -177,7 +177,6 @@ function addToCartBtn() {
       const addedDiv = document.querySelector(`.js-added-${id}`);
       addedDiv.classList.add("added-to-cart-visible");
       saveToLocal();
-      await saveCart(currentUser)
 
       setTimeout(() => {
         addedDiv.classList.remove("added-to-cart-visible");

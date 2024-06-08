@@ -15,7 +15,7 @@ const today = dayjs();
 
 renderCartPage();
 
-function renderCartPage() {
+async function renderCartPage() {
   let html = "";
 
   for (const item of cart) {
@@ -76,6 +76,8 @@ function renderCartPage() {
   renderOrderSummary();
   deleteBtns();
   updateBtns();
+
+  await saveCart(currentUser)
 }
 
 function renderDelivBtns(item) {
