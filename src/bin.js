@@ -1,4 +1,3 @@
-export let users;
 export let products;
 
 export function fetchData(data) {

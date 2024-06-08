@@ -47,7 +47,7 @@ async function deleteAccount() {
 
 
 async function signOut(){
-  await updateUser(currentUser);
+  //await updateUser(currentUser);
 
   localStorage.removeItem("selham_products")
   localStorage.removeItem("selham_currentUser");
