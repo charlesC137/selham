@@ -7,7 +7,7 @@ import {
   categoryArray,
 } from "./general.js";
 
-import { fetchProducts } from "./bin.js";
+import { fetchProducts, saveCart } from "./bin.js";
 
 let products = JSON.parse(localStorage.getItem("selham_products")) || [];
 
@@ -60,6 +60,7 @@ document.querySelector(".search-bar").addEventListener("keyup", () => {
 
 async function renderHomePage(array) {
   await fetchProducts(products);
+  await saveCart(currentUser)
   let homeHtml = "";
   
   for (const item of array) {

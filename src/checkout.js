@@ -165,7 +165,7 @@ function renderDelivBtns(item) {
   getDelivDate(item.currentProduct.id);
 }
 
-async function renderOrderSummary() {
+function renderOrderSummary() {
   let itemsPrice = 0;
   let shipping = 0;
   let beforetax = 0;
@@ -212,7 +212,7 @@ async function renderOrderSummary() {
   <button class="place-order-button button-primary">Place your order</button>
   `;
 
-  await placeOrderBtn();
+  placeOrderBtn();
 }
 
 function itemsNumDisplay() {
@@ -328,14 +328,13 @@ function getDelivDate(id) {
   }
 }
 
-async function placeOrderBtn() {
+function placeOrderBtn() {
   document
     .querySelector(".place-order-button")
-    .addEventListener("click", async () => {
+    .addEventListener("click", () => {
       if (cart.length > 0) {
         cart.splice(0, cart.length);
         saveToLocal();
-        await saveCart(currentUser)
         window.open("done.html", "_self");
       }
     });
