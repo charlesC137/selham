@@ -1,5 +1,5 @@
 import { checkUserDetails } from "./general.js";
-import { modData, updateUser, users } from "./bin.js";
+import { deleteAcctAsync, saveCart } from "./bin.js";
 
 const currentUser = checkUserDetails();
 
@@ -10,8 +10,6 @@ userNameSpans.forEach((userNameSpan) => {
 });
 
 document.querySelector(".useremail").textContent = currentUser.userLogins.email;
-
-document.querySelector(".user-password").textContent = currentUser.userLogins.password;
 
 document.querySelector(".sign-out-btn").addEventListener("click", () => {
   signOut();
@@ -30,26 +28,19 @@ document.querySelector(".cancel-btn-modal").addEventListener("click", () => {
 });
 
 async function deleteAccount() {
-  for (let i = 0; i < users.length; i++) {
-    const user = users[i];
-
-    if (currentUser.userLogins.username === user.userLogins.username) {
-      users.splice(i, 1);
-
-      await modData(users);
-
-      localStorage.removeItem("selham_products")
-      localStorage.removeItem("selham_currentUser");
-      window.open("index.html", "_self");
-    }
-  }
+  await deleteAcctAsync(currentUser);
+  clearFromLocal();
 }
 
 
-async function signOut(){
-  //await updateUser(currentUser);
+async function signOut() {
+  await saveCart(currentUser);
+  clearFromLocal();
+}
 
-  localStorage.removeItem("selham_products")
+
+function clearFromLocal() {
+  localStorage.removeItem("selham_products");
   localStorage.removeItem("selham_currentUser");
   window.open("index.html", "_self");
 }

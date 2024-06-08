@@ -58,3 +58,61 @@ export function getDeliveryOption(deliveryOptionId) {
 
   return deliveryOption || deliveryOptions[0];
 }
+
+export let categoryArray = [
+  {
+    src: "./assets/category-icons/all.svg",
+    filter: 'all',
+    pText: 'All'
+  },
+  {
+    src: "./assets/category-icons/appliance.svg",
+    filter: 'appliance',
+    pText: 'Appliance'
+  },
+  {
+    src: "./assets/category-icons/babyproducts.svg",
+    filter: 'babyproducts',
+    pText: 'Baby Products'
+  },
+  {
+    src: "./assets/category-icons/computing.svg",
+    filter: 'computing',
+    pText: 'Computing'
+  },
+  {
+    src: "./assets/category-icons/supermarket.svg",
+    filter: 'supermarket',
+    pText: 'Supermarket'
+  },
+  {
+    src: "./assets/category-icons/electronics.svg",
+    filter: 'electronics',
+    pText: 'Electronics'
+  },
+  {
+    src: "./assets/category-icons/gaming.svg",
+    filter: 'gaming',
+    pText: 'Gaming'
+  },
+  {
+    src: "./assets/category-icons/health.svg",
+    filter: 'health',
+    pText: 'Health'
+  },
+  {
+    src: "./assets/category-icons/menfashion.svg",
+    filter: 'menfashion',
+    pText: `Men's Fashion`
+  },
+  {
+    src: "./assets/category-icons/phone.svg",
+    filter: 'phones',
+    pText: 'Phones'
+  },
+  {
+    src: "./assets/category-icons/womenfashion.svg",
+    filter: 'womenfashion',
+    pText: `Women's Fashion`
+  },
+]

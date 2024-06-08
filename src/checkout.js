@@ -1,4 +1,4 @@
-import { updateUser } from "./bin.js";
+import { saveCart } from "./bin.js";
 import {
   checkUserDetails,
   cart,
@@ -333,7 +333,7 @@ function placeOrderBtn() {
       if (cart.length > 0) {
         cart.splice(0, cart.length);
         saveToLocal();
-        await updateUser(currentUser)
+        await saveCart(currentUser)
         window.open("done.html", "_self");
       }
     });

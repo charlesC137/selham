@@ -4,16 +4,17 @@ import {
   cart,
   getCartItemQuantity,
   saveToLocal,
+  categoryArray,
 } from "./general.js";
 
-import { fetchData, categoryArray, updateUser } from "./bin.js";
+import { fetchProducts, saveCart } from "./bin.js";
 
 let products = JSON.parse(localStorage.getItem("selham_products")) || [];
 
 const currentUser = checkUserDetails();
 renderCategoryHtml();
-renderHomePage(products);
-fetchProductsAsync();
+renderHomePage(products)
+fetchProducts(products, renderHomePage)
 
 class cartItem {
   constructor(currentProduct, quantity) {
@@ -57,22 +58,8 @@ document.querySelector(".search-bar").addEventListener("keyup", () => {
   searchBarFunc();
 });
 
-async function fetchProductsAsync() {
-  try {
-    const responsejson = await fetchData("664e2897ad19ca34f86d8442");
-    const response = JSON.parse(responsejson);
-
-    if (products !== response.record) {
-      products = response.record;
-      localStorage.setItem("selham_products", JSON.stringify(products));
-      renderHomePage(products);
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function renderHomePage(array) {
+async function renderHomePage(array) {
+  await fetchProducts(products);
   let homeHtml = "";
   
   for (const item of array) {
@@ -190,8 +177,7 @@ function addToCartBtn() {
       const addedDiv = document.querySelector(`.js-added-${id}`);
       addedDiv.classList.add("added-to-cart-visible");
       saveToLocal();
-
-      //await updateUser(currentUser);
+      saveCart(currentUser)
 
       setTimeout(() => {
         addedDiv.classList.remove("added-to-cart-visible");
