@@ -1,7 +1,3 @@
-import { modData, users } from "./bin.js";
-
-let currentUser;
-
 const signUpBtn = document.querySelector(".sign-up-btn");
 const emailInput = document.querySelector("#email");
 const usernameInput = document.querySelector("#username");
@@ -31,18 +27,34 @@ function togglePassword(input, img) {
 }
 
 async function signUserUp() {
-  const response = await fetch("https://api-selham.onrender.com/api/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: {
-      "username": `${usernameInput.value}`,
-      "email": `${emailInput.value}`,
-      "password": `${passwordInput.value}`,
-    },
-  });
+  if (!usernameInput.value || !emailInput.value || !passwordInput.value) {
+    errorMsg.textContent = "Please fill out all fields.";
+    return;
+  }
 
-  const state = await response.json();
-  console.log(state)
+  try {
+    const response = await fetch("https://api-selham.onrender.com/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: usernameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+      })
+    });
+
+    const state = await response.json()
+
+    if(state.isValid){
+      window.open(`${state.redirectUrl}`, "_self")
+    }
+    
+    errorMsg.textContent = state.errorMsg;
+
+  } catch (error) {
+    console.error(error);
+    errorMsg.textContent = "An error occurred. Please try again later.";
+  }
 }

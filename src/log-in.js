@@ -1,17 +1,9 @@
-import { users } from "./bin.js";
-
-let currentUser;
-
 const loginBtn = document.querySelector(".log-in-btn");
 const userInput = document.querySelector("#userId");
 const passwordInput = document.querySelector("#password");
 const viewPass = document.querySelector(".view-pw");
 const viewImg = document.querySelector(".view-img");
 const errorMsg = document.querySelector(".error-msg");
-
-const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-const usernameRegex = /^\w+/;
-const passwordRegex = /^[@$!%*#?&a-zA-Z0-9._-]+$/;
 
 viewPass.addEventListener("click", (e) => {
   e.preventDefault();
@@ -33,40 +25,40 @@ function togglePassword(input, img) {
   }
 }
 
-function logUserIn() {
-  let passwordState;
-  let userInputState;
-
-  if (
-    (emailRegex.test(userInput.value) || usernameRegex.test(userInput.value)) &&
-    passwordRegex.test(passwordInput.value)
-  ) {
-    if (users.length === 0) {
-      window.open("sign-up.html", "_blank");
-    } else {
-      for (const user of users) {
-        if (
-          userInput.value === user.userLogins.email ||
-          userInput.value === user.userLogins.username
-        ) {
-          userInputState = true;
-          if (passwordInput.value === user.userLogins.password) {
-            passwordState = true;
-            currentUser = user;
-          }
-        }
-      }
-    }
-  } else {
-    errorMsg.textContent = "Invalid input";
+async function logUserIn() {
+  if (!userInput.value || !passwordInput.value) {
+    errorMsg.textContent = "Please fill out all fields.";
+    return;
   }
 
-  if (passwordState && userInputState) {
-    localStorage.setItem("selham_currentUser", JSON.stringify(currentUser));
-    window.open("home.html", "_self");
-  } else if (!userInputState) {
-    errorMsg.textContent = "User not found";
-  } else if (!passwordState) {
-    errorMsg.textContent = "Incorrect password";
+  try {
+    const response = await fetch("https://api-selham.onrender.com/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        userInput: userInput.value,
+        password: passwordInput.value,
+      })
+    });
+
+    const state = await response.json()
+    console.log(state)
+
+    if(!state.users){
+      window.open(`${state.signUpUrl}`, "_self")
+    }
+     
+    if (state.isValid){
+      localStorage.setItem("selham_currentUser", JSON.stringify(state.loggedUser))
+      window.open(`${state.redirectUrl}`, "_self")
+    }
+    
+    errorMsg.textContent = state.errorMsg;
+
+  } catch (error) {
+    console.error(error);
+    errorMsg.textContent = "An error occurred. Please try again later.";
   }
 }

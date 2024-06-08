@@ -12,7 +12,6 @@ export function checkUserDetails() {
     window.open("index.html", "_self");
   } else {
     const currentUser = JSON.parse(localStorage.getItem("selham_currentUser"));
-    console.log
     return currentUser;
   }
 }

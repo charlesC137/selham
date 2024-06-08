@@ -191,7 +191,7 @@ function addToCartBtn() {
       addedDiv.classList.add("added-to-cart-visible");
       saveToLocal();
 
-      await updateUser(currentUser);
+      //await updateUser(currentUser);
 
       setTimeout(() => {
         addedDiv.classList.remove("added-to-cart-visible");
@@ -246,3 +246,5 @@ function searchBarFunc() {
       renderHomePage(products);
     }
 }
+
+
