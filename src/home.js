@@ -177,7 +177,7 @@ function addToCartBtn() {
       const addedDiv = document.querySelector(`.js-added-${id}`);
       addedDiv.classList.add("added-to-cart-visible");
       saveToLocal();
-      saveCart(currentUser)
+      await saveCart(currentUser)
 
       setTimeout(() => {
         addedDiv.classList.remove("added-to-cart-visible");
