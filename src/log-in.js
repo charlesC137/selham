@@ -51,7 +51,7 @@ async function logUserIn() {
     }
      
     if (state.isValid){
-      localStorage.setItem("selham_currentUser", JSON.stringify(state.loggedUser))
+      localStorage.setItem("selham_currentUser", JSON.stringify(state.activeUser))
       window.open(`${state.redirectUrl}`, "_self")
     }
     
