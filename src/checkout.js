@@ -165,7 +165,7 @@ function renderDelivBtns(item) {
   getDelivDate(item.currentProduct.id);
 }
 
-function renderOrderSummary() {
+async function renderOrderSummary() {
   let itemsPrice = 0;
   let shipping = 0;
   let beforetax = 0;
@@ -212,7 +212,7 @@ function renderOrderSummary() {
   <button class="place-order-button button-primary">Place your order</button>
   `;
 
-  placeOrderBtn();
+  await placeOrderBtn();
 }
 
 function itemsNumDisplay() {
@@ -328,7 +328,7 @@ function getDelivDate(id) {
   }
 }
 
-function placeOrderBtn() {
+async function placeOrderBtn() {
   document
     .querySelector(".place-order-button")
     .addEventListener("click", async () => {
