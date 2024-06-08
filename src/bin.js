@@ -6,11 +6,11 @@ export async function fetchProducts(local_products, callback) {
     if (products !== local_products) {
       local_products = products;
       localStorage.setItem("selham_products", JSON.stringify(local_products));
+      if (callback) {
+        callback(local_products); 
+      }
     }
 
-    if (callback) {
-      callback(local_products); 
-    }
   } catch (error) {
     console.error(error);
   }

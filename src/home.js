@@ -122,7 +122,6 @@ async function renderHomePage(array) {
   }
 
   document.querySelector(".products-grid").innerHTML = homeHtml;
-  addToCartBtn();
 }
 
 function renderCategoryHtml() {
@@ -199,6 +198,7 @@ function categoryBtns() {
 
       if (newArray.length > 0) {
         renderHomePage(newArray);
+        addToCartBtn();
       } else {
         document.querySelector(".products-grid").innerHTML = `
         <div class="no-item-div">
@@ -221,6 +221,7 @@ function searchBarFunc() {
       
       if (newArray.length > 0) {
         renderHomePage(newArray);
+        addToCartBtn();
       } else {
         document.querySelector(".products-grid").innerHTML = `
         <div class="no-item-div">
@@ -230,6 +231,7 @@ function searchBarFunc() {
       }
     } else{
       renderHomePage(products);
+      addToCartBtn();
     }
 }
 
