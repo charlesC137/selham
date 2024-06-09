@@ -59,8 +59,6 @@ document.querySelector(".search-bar").addEventListener("keyup", () => {
 });
 
 async function renderHomePage(array) {
-  await fetchProducts(products);
-  await saveCart(currentUser)
   let homeHtml = "";
   
   for (const item of array) {
@@ -122,6 +120,8 @@ async function renderHomePage(array) {
   }
 
   document.querySelector(".products-grid").innerHTML = homeHtml;
+  addToCartBtn();
+  await saveCart(currentUser);
 }
 
 function renderCategoryHtml() {
@@ -146,20 +146,17 @@ function addToCartBtn() {
       const id = btn.dataset.productId;
       let matchingProduct;
       const quantity = parseInt(document.querySelector(`.select-${id}`).value);
-      let currentProduct;
 
-      for (const product of products) {
-        if (product.id === id) {
-          currentProduct = product;
-          break;
-        }
-      }
+      const currentProduct = products.find((product) => {
+        return product.id === id
+      })
 
       if (cart.length === 0) {
         cart.unshift(new cartItem(currentProduct, quantity));
       } else {
         matchingProduct = false;
         for (const item of cart) {
+          console.log(item)
           if (item.currentProduct.id === id) {
             matchingProduct = true;
             item.quantity += quantity;
@@ -198,7 +195,6 @@ function categoryBtns() {
 
       if (newArray.length > 0) {
         renderHomePage(newArray);
-        addToCartBtn();
       } else {
         document.querySelector(".products-grid").innerHTML = `
         <div class="no-item-div">
@@ -221,7 +217,6 @@ function searchBarFunc() {
       
       if (newArray.length > 0) {
         renderHomePage(newArray);
-        addToCartBtn();
       } else {
         document.querySelector(".products-grid").innerHTML = `
         <div class="no-item-div">
@@ -231,7 +226,6 @@ function searchBarFunc() {
       }
     } else{
       renderHomePage(products);
-      addToCartBtn();
     }
 }
 
