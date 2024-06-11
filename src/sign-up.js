@@ -36,23 +36,22 @@ async function signUserUp() {
     const response = await fetch("https://api-selham.onrender.com/api/signup", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: usernameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
-      })
+      }),
     });
 
-    const state = await response.json()
+    const state = await response.json();
 
-    if(state.isValid){
-      window.open(`${state.redirectUrl}`, "_self")
+    if (state.isValid) {
+      window.open(`${state.redirectUrl}`, "_self");
     }
-    
-    errorMsg.textContent = state.errorMsg;
 
+    errorMsg.textContent = state.errorMsg;
   } catch (error) {
     console.error(error);
     errorMsg.textContent = "An error occurred. Please try again later.";

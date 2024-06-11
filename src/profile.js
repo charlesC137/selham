@@ -1,7 +1,7 @@
-import { checkUserDetails } from "./general.js";
+import { checkUserDetails, clearFromLocal } from "./general.js";
 import { deleteAcctAsync, saveCart } from "./bin.js";
 
-const currentUser = checkUserDetails();
+const currentUser = await checkUserDetails();
 
 const userNameSpans = document.querySelectorAll(".username");
 
@@ -38,9 +38,3 @@ async function signOut() {
   clearFromLocal();
 }
 
-
-function clearFromLocal() {
-  localStorage.removeItem("selham_products");
-  localStorage.removeItem("selham_currentUser");
-  window.open("index.html", "_self");
-}

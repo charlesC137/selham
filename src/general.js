@@ -1,19 +1,52 @@
-const currentUser = checkUserDetails();
+const currentUser =  await checkUserDetails();
 
 export let cart = currentUser.cart
-
 
 export function saveToLocal(){
   localStorage.setItem('selham_currentUser', JSON.stringify(currentUser))
 }
 
-export function checkUserDetails() {
+export async function checkUserDetails() {
   if (!localStorage.getItem("selham_currentUser")) {
     window.open("index.html", "_self");
   } else {
     const currentUser = JSON.parse(localStorage.getItem("selham_currentUser"));
+    await userExists(currentUser)
     return currentUser;
   }
+}
+
+async function userExists(user){
+  try {
+    const response = await fetch("https://api-selham.onrender.com/api/user-exists", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: user.userLogins.username,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to find user: ${response.status} ${response.statusText}`);
+    }
+
+    const state = await response.json();
+    console.log(state)
+    if(!state){
+      clearFromLocal();
+    }
+
+  } catch (error) {
+    console.error('Error finding user', error);
+  }
+}
+
+export function clearFromLocal() {
+  localStorage.removeItem("selham_products");
+  localStorage.removeItem("selham_currentUser");
+  window.open("index.html", "_self");
 }
 
 export function formatCurrency(priceCents) {

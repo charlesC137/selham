@@ -44,7 +44,6 @@ async function logUserIn() {
     });
 
     const state = await response.json()
-    console.log(state)
 
     if(!state.users){
       window.open(`${state.signUpUrl}`, "_self")

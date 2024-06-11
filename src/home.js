@@ -11,7 +11,7 @@ import { fetchProducts, saveCart } from "./bin.js";
 
 let products = JSON.parse(localStorage.getItem("selham_products")) || [];
 
-const currentUser = checkUserDetails();
+const currentUser = await checkUserDetails();
 renderCategoryHtml();
 renderHomePage(products)
 fetchProducts(products, renderHomePage)
@@ -228,5 +228,4 @@ function searchBarFunc() {
       renderHomePage(products);
     }
 }
-
 
