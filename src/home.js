@@ -150,13 +150,12 @@ function addToCartBtn() {
       const currentProduct = products.find((product) => {
         return product._id === id;
       });
-      console.log(currentProduct);
+
       if (cart.length === 0) {
         cart.unshift(new cartItem(currentProduct, quantity));
       } else {
         matchingProduct = false;
         for (const item of cart) {
-          console.log(item);
           if (item.currentProduct._id === id) {
             matchingProduct = true;
             item.quantity += quantity;
