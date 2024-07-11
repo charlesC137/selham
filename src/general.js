@@ -1,4 +1,4 @@
-const currentUser = await checkUserDetails();
+const currentUser = checkUserDetails();
 
 export let cart = currentUser.cart;
 

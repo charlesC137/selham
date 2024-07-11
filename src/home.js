@@ -148,7 +148,7 @@ function addToCartBtn() {
       const quantity = parseInt(document.querySelector(`.select-${id}`).value);
 
       const currentProduct = products.find((product) => {
-        return product.id === id;
+        return product._id === id;
       });
 
       if (cart.length === 0) {
@@ -157,7 +157,7 @@ function addToCartBtn() {
         matchingProduct = false;
         for (const item of cart) {
           console.log(item);
-          if (item.currentProduct.id === id) {
+          if (item.currentProduct._id === id) {
             matchingProduct = true;
             item.quantity += quantity;
             break;

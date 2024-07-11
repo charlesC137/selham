@@ -20,11 +20,11 @@ async function renderCartPage() {
 
   for (const item of cart) {
     html += `
-    <div class="cart-item-container js-container-${item.currentProduct.id}">
+    <div class="cart-item-container js-container-${item.currentProduct._id}">
     <div class="delivery-date">Delivery date: </div>
 
     <div class="cart-item-details-grid js-cart-item-details-grid-${
-      item.currentProduct.id
+      item.currentProduct._id
     }">
       <img class="product-image" src="${item.currentProduct.image}">
 
@@ -39,21 +39,21 @@ async function renderCartPage() {
           <span> Quantity: <span class="quantity-label">${
             item.quantity
           }</span> </span>
-         <div class="update_delete-btns js-btns-${item.currentProduct.id}">
+         <div class="update_delete-btns js-btns-${item.currentProduct._id}">
           <button class="update-quantity-btn" data-id="${
-            item.currentProduct.id
+            item.currentProduct._id
           }">
             Update
           </button>
           
-          <button class="delete-item-btn" data-id="${item.currentProduct.id}">
+          <button class="delete-item-btn" data-id="${item.currentProduct._id}">
             Delete
           </button>
          </div>
 
-         <div class="update-item-div js-mod-${item.currentProduct.id}">
+         <div class="update-item-div js-mod-${item.currentProduct._id}">
           <input class="update-quantity-input" type="number" max="10" min="1">
-          <button data-id="${item.currentProduct.id}">
+          <button data-id="${item.currentProduct._id}">
             <img src="./assets/icons-general/checkmark.png" alt="done">
           </button>
          </div>
@@ -82,16 +82,16 @@ async function renderCartPage() {
 
 function renderDelivBtns(item) {
   let html = `
- <div class="delivery-options js-delivery-options-${item.currentProduct.id}">
+ <div class="delivery-options js-delivery-options-${item.currentProduct._id}">
         <div class="delivery-options-title">
           Choose a delivery option:
         </div>
 
   <div class="delivery-option js-delivery-option" data-product-id="${
-    item.currentProduct.id
+    item.currentProduct._id
   }">
   <input type="radio" class="delivery-option-input" name="delivery-option-${
-    item.currentProduct.id
+    item.currentProduct._id
   }" data-delivery-option-id="1">
   <div>
     <div class="delivery-option-date">
@@ -104,10 +104,10 @@ function renderDelivBtns(item) {
 </div>
 
 <div class="delivery-option js-delivery-option" data-product-id="${
-    item.currentProduct.id
+    item.currentProduct._id
   }">
   <input type="radio" class="delivery-option-input" name="delivery-option-${
-    item.currentProduct.id
+    item.currentProduct._id
   }" data-delivery-option-id="2">
   <div>
     <div class="delivery-option-date">
@@ -120,10 +120,10 @@ function renderDelivBtns(item) {
 </div>
 
 <div class="delivery-option js-delivery-option" data-product-id="${
-    item.currentProduct.id
+    item.currentProduct._id
   }">
   <input type="radio" class="delivery-option-input" name="delivery-option-${
-    item.currentProduct.id
+    item.currentProduct._id
   }" data-delivery-option-id="3">
   <div>
     <div class="delivery-option-date">
@@ -137,11 +137,11 @@ function renderDelivBtns(item) {
 </div>`;
 
   document.querySelector(
-    `.js-cart-item-details-grid-${item.currentProduct.id}`
+    `.js-cart-item-details-grid-${item.currentProduct._id}`
   ).innerHTML += html;
 
   document
-    .querySelectorAll(`.js-delivery-options-${item.currentProduct.id} input`)
+    .querySelectorAll(`.js-delivery-options-${item.currentProduct._id} input`)
     .forEach((btn) => {
       const id = btn.dataset.deliveryOptionId;
 
@@ -150,9 +150,9 @@ function renderDelivBtns(item) {
       }
 
       btn.addEventListener("click", (e) => {
-        delivOptBtns(item.currentProduct.id, id);
+        delivOptBtns(item.currentProduct._id, id);
         document.querySelector(
-          `.js-container-${item.currentProduct.id} .delivery-date`
+          `.js-container-${item.currentProduct._id} .delivery-date`
         ).textContent = `Delivery date: ${
           e.target.parentElement.querySelector(".delivery-option-date")
             .textContent
@@ -162,7 +162,7 @@ function renderDelivBtns(item) {
       });
     });
 
-  getDelivDate(item.currentProduct.id);
+  getDelivDate(item.currentProduct._id);
 }
 
 function renderOrderSummary() {
@@ -235,7 +235,7 @@ function deleteBtns() {
       for (let i = 0; i < cart.length; i++) {
         const item = cart[i];
 
-        if (item.currentProduct.id === id) {
+        if (item.currentProduct._id === id) {
           cart.splice(i, 1);
           saveToLocal();
           renderCartPage();
@@ -269,7 +269,7 @@ function updateQuantity(id) {
         for (let i = 0; i < cart.length; i++) {
           const item = cart[i];
 
-          if (item.currentProduct.id === id) {
+          if (item.currentProduct._id === id) {
             item.quantity = input;
             renderCartPage();
             break;
@@ -279,7 +279,7 @@ function updateQuantity(id) {
         for (let i = 0; i < cart.length; i++) {
           const item = cart[i];
 
-          if (item.currentProduct.id === id) {
+          if (item.currentProduct._id === id) {
             cart.splice(i, 1);
             renderCartPage();
             break;
@@ -296,7 +296,7 @@ function updateQuantity(id) {
 
 function delivOptBtns(cartId, btnId) {
   for (const item of cart) {
-    if (item.currentProduct.id === cartId) {
+    if (item.currentProduct._id === cartId) {
       item.deliveryOptionId = btnId;
       saveToLocal();
       break;
