@@ -88,7 +88,7 @@ async function renderHomePage(array) {
       <div class="product-price">$${formatCurrency(item.priceCents)}</div>
 
       <div class="product-quantity-container">
-        <select class="select-${item.id}">
+        <select class="select-${item._id}">
           <option selected="" value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -104,13 +104,13 @@ async function renderHomePage(array) {
 
       <div class="product-spacer"></div>
 
-      <div class="added-to-cart js-added-${item.id}">
+      <div class="added-to-cart js-added-${item._id}">
         <img src="assets/icons-general/checkmark.png" />
         Added
       </div>
 
       <button class="add-to-cart-button button-primary" data-product-id="${
-        item.id
+        item._id
       }">
         Add to Cart
       </button>
@@ -150,7 +150,7 @@ function addToCartBtn() {
       const currentProduct = products.find((product) => {
         return product._id === id;
       });
-
+      console.log(currentProduct);
       if (cart.length === 0) {
         cart.unshift(new cartItem(currentProduct, quantity));
       } else {
