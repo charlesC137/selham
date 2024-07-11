@@ -1,7 +1,7 @@
 import { checkUserDetails, clearFromLocal } from "./general.js";
 import { deleteAcctAsync, saveCart } from "./bin.js";
 
-const currentUser = await checkUserDetails();
+const currentUser = checkUserDetails();
 
 const userNameSpans = document.querySelectorAll(".username");
 
@@ -32,9 +32,7 @@ async function deleteAccount() {
   clearFromLocal();
 }
 
-
 async function signOut() {
   await saveCart(currentUser);
   clearFromLocal();
 }
-

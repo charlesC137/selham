@@ -1,45 +1,17 @@
-const currentUser =  await checkUserDetails();
+const currentUser = await checkUserDetails();
 
-export let cart = currentUser.cart
+export let cart = currentUser.cart;
 
-export function saveToLocal(){
-  localStorage.setItem('selham_currentUser', JSON.stringify(currentUser))
+export function saveToLocal() {
+  localStorage.setItem("selham_currentUser", JSON.stringify(currentUser));
 }
 
-export async function checkUserDetails() {
+export function checkUserDetails() {
   if (!localStorage.getItem("selham_currentUser")) {
     window.open("index.html", "_self");
   } else {
     const currentUser = JSON.parse(localStorage.getItem("selham_currentUser"));
-    await userExists(currentUser)
     return currentUser;
-  }
-}
-
-async function userExists(user){
-  try {
-    const response = await fetch("https://api-selham.onrender.com/api/user-exists", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: user.userLogins.username,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to find user: ${response.status} ${response.statusText}`);
-    }
-
-    const state = await response.json();
-    console.log(state)
-    if(!state){
-      clearFromLocal();
-    }
-
-  } catch (error) {
-    console.error('Error finding user', error);
   }
 }
 
@@ -66,19 +38,23 @@ export function getCartItemQuantity() {
   }
 }
 
-export const deliveryOptions = [{
-  id: '1',
-  deliveryDays: 7,
-  priceCents: 0
-}, {
-  id: '2',
-  deliveryDays: 3,
-  priceCents: 499
-}, {
-  id: '3',
-  deliveryDays: 1,
-  priceCents: 999
-}];
+export const deliveryOptions = [
+  {
+    id: "1",
+    deliveryDays: 7,
+    priceCents: 0,
+  },
+  {
+    id: "2",
+    deliveryDays: 3,
+    priceCents: 499,
+  },
+  {
+    id: "3",
+    deliveryDays: 1,
+    priceCents: 999,
+  },
+];
 
 export function getDeliveryOption(deliveryOptionId) {
   let deliveryOption;
@@ -95,57 +71,57 @@ export function getDeliveryOption(deliveryOptionId) {
 export let categoryArray = [
   {
     src: "./assets/category-icons/all.svg",
-    filter: 'all',
-    pText: 'All'
+    filter: "all",
+    pText: "All",
   },
   {
     src: "./assets/category-icons/appliance.svg",
-    filter: 'appliance',
-    pText: 'Appliance'
+    filter: "appliance",
+    pText: "Appliance",
   },
   {
     src: "./assets/category-icons/babyproducts.svg",
-    filter: 'babyproducts',
-    pText: 'Baby Products'
+    filter: "babyproducts",
+    pText: "Baby Products",
   },
   {
     src: "./assets/category-icons/computing.svg",
-    filter: 'computing',
-    pText: 'Computing'
+    filter: "computing",
+    pText: "Computing",
   },
   {
     src: "./assets/category-icons/supermarket.svg",
-    filter: 'supermarket',
-    pText: 'Supermarket'
+    filter: "supermarket",
+    pText: "Supermarket",
   },
   {
     src: "./assets/category-icons/electronics.svg",
-    filter: 'electronics',
-    pText: 'Electronics'
+    filter: "electronics",
+    pText: "Electronics",
   },
   {
     src: "./assets/category-icons/gaming.svg",
-    filter: 'gaming',
-    pText: 'Gaming'
+    filter: "gaming",
+    pText: "Gaming",
   },
   {
     src: "./assets/category-icons/health.svg",
-    filter: 'health',
-    pText: 'Health'
+    filter: "health",
+    pText: "Health",
   },
   {
     src: "./assets/category-icons/menfashion.svg",
-    filter: 'menfashion',
-    pText: `Men's Fashion`
+    filter: "menfashion",
+    pText: `Men's Fashion`,
   },
   {
     src: "./assets/category-icons/phone.svg",
-    filter: 'phones',
-    pText: 'Phones'
+    filter: "phones",
+    pText: "Phones",
   },
   {
     src: "./assets/category-icons/womenfashion.svg",
-    filter: 'womenfashion',
-    pText: `Women's Fashion`
+    filter: "womenfashion",
+    pText: `Women's Fashion`,
   },
-]
+];

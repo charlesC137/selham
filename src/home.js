@@ -11,10 +11,10 @@ import { fetchProducts, saveCart } from "./bin.js";
 
 let products = JSON.parse(localStorage.getItem("selham_products")) || [];
 
-const currentUser = await checkUserDetails();
+const currentUser = checkUserDetails();
 renderCategoryHtml();
-renderHomePage(products)
-fetchProducts(products, renderHomePage)
+renderHomePage(products);
+fetchProducts(products, renderHomePage);
 
 class cartItem {
   constructor(currentProduct, quantity) {
@@ -25,7 +25,7 @@ class cartItem {
 }
 
 document.querySelector(".username").textContent =
-currentUser.userLogins.username;
+  currentUser.userLogins.username;
 
 document.querySelector(".cart-items-no").textContent = getCartItemQuantity();
 
@@ -51,7 +51,7 @@ document.querySelector(".cat-down-btn").addEventListener("click", () => {
 });
 
 document.querySelector(".search-btn").addEventListener("click", () => {
-    searchBarFunc();
+  searchBarFunc();
 });
 
 document.querySelector(".search-bar").addEventListener("keyup", () => {
@@ -60,7 +60,7 @@ document.querySelector(".search-bar").addEventListener("keyup", () => {
 
 async function renderHomePage(array) {
   let homeHtml = "";
-  
+
   for (const item of array) {
     homeHtml += `
     <div class="product-container">
@@ -148,15 +148,15 @@ function addToCartBtn() {
       const quantity = parseInt(document.querySelector(`.select-${id}`).value);
 
       const currentProduct = products.find((product) => {
-        return product.id === id
-      })
+        return product.id === id;
+      });
 
       if (cart.length === 0) {
         cart.unshift(new cartItem(currentProduct, quantity));
       } else {
         matchingProduct = false;
         for (const item of cart) {
-          console.log(item)
+          console.log(item);
           if (item.currentProduct.id === id) {
             matchingProduct = true;
             item.quantity += quantity;
@@ -208,24 +208,25 @@ function categoryBtns() {
 }
 
 function searchBarFunc() {
-  const searchBarVal = document.querySelector(".search-bar").value.toLowerCase();
-    let newArray;
-    if (searchBarVal) {
-      newArray = products.filter((product) => {
-        return (product.name.toLowerCase()).includes(searchBarVal);
-      });
-      
-      if (newArray.length > 0) {
-        renderHomePage(newArray);
-      } else {
-        document.querySelector(".products-grid").innerHTML = `
+  const searchBarVal = document
+    .querySelector(".search-bar")
+    .value.toLowerCase();
+  let newArray;
+  if (searchBarVal) {
+    newArray = products.filter((product) => {
+      return product.name.toLowerCase().includes(searchBarVal);
+    });
+
+    if (newArray.length > 0) {
+      renderHomePage(newArray);
+    } else {
+      document.querySelector(".products-grid").innerHTML = `
         <div class="no-item-div">
           <p class="no-item-p">No item to display</p>
         </div>  
           `;
-      }
-    } else{
-      renderHomePage(products);
     }
+  } else {
+    renderHomePage(products);
+  }
 }
-
